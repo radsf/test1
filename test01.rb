@@ -1,4 +1,3 @@
-# test1
 require 'dxruby'
 
 Window.width = 640
