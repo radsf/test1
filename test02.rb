@@ -5,7 +5,7 @@ class Background
   def initialize
     @image = Image.load('background.png')  # 背景画像の読み込み
     @scroll_y = 0  # スクロール位置の初期化
-    @scroll_speed = 1  # スクロール速度の設定
+    @scroll_speed = 10  # スクロール速度の設定
   end
 
   def update
@@ -23,6 +23,7 @@ end
 class Player < Sprite
   def initialize
     image = Image.new(64, 64).circle_fill(32, 32, 32, C_RED)
+    @image = Image.load('sensya.png') #洗車の画像
     super(320, 400, image)
   end
 
@@ -107,4 +108,3 @@ Window.loop do
   # 画面のクリア
   Window.bgcolor = C_BLACK
 end
-
