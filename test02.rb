@@ -1,5 +1,24 @@
 require 'dxruby'
 
+# 背景のクラス定義
+class Background
+  def initialize
+    @image = Image.load('background.png')  # 背景画像の読み込み
+    @scroll_y = 0  # スクロール位置の初期化
+    @scroll_speed = 1  # スクロール速度の設定
+  end
+
+  def update
+    @scroll_y += @scroll_speed  # スクロール位置を更新
+    @scroll_y %= @image.height  # 画像の高さでループさせる
+  end
+
+  def draw
+    Window.draw(0, 0, @image)  # 背景を描画
+    Window.draw(0, @image.height - @scroll_y, @image)  # ループさせた背景を描画
+  end
+end
+
 # プレイヤーのクラス定義
 class Player < Sprite
   def initialize
@@ -46,10 +65,17 @@ player = Player.new
 bullets = []
 enemies = []
 
+# 背景の初期化
+background = Background.new
+
 Window.loop do
   # プレイヤーの更新と描画
   player.update
   player.draw
+
+  # 背景の更新と描画
+  background.update
+  background.draw
 
   # 弾の発射処理
   if Input.key_push?(K_SPACE)
@@ -79,5 +105,6 @@ Window.loop do
   Sprite.check(bullets, enemies)
 
   # 画面のクリア
-  Window.draw_box_fill(0, 0, 640, 480, C_BLACK)
+  Window.bgcolor = C_BLACK
 end
+
