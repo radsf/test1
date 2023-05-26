@@ -27,6 +27,10 @@ bullet_image = Image.new(8, 8)  # 弾の画像を作成
 
 bullets = []  # 弾の配列
 
+enemy_image = Image.new(32, 32)  # 敵の画像を作成
+
+enemies = []  # 敵の配列
+
 Window.loop do
   # プレイヤーの移動や弾の発射処理を記述する
 
@@ -35,10 +39,6 @@ Window.loop do
   # 弾と敵の当たり判定
   Sprite.check(bullets, enemies)
 end
-
-enemy_image = Image.new(32, 32)  # 敵の画像を作成
-
-enemies = []  # 敵の配列
 
 Window.loop do
   # 敵の生成や移動処理を記述する
