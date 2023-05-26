@@ -5,6 +5,14 @@ Window.height = 480
 
 Window.loop do
   # ゲームの処理を記述する
+
+
+Window.bgcolor = [255, 128, 255, 255] # 追加
+ground_img = Image.new(640, 80, [255, 116, 80, 48]) # 追加
+ground_img.box_fill(0, 0, 640, 10, [255, 0, 128, 0]) # 追加
+
+Window.loop do
+  Window.draw(0, 400, ground_img) # 追加
 end
 
 player_image = Image.new(32, 32)  # プレイヤーの画像を作成
@@ -49,4 +57,6 @@ Window.loop do
   Sprite.check(bullets, enemies)
 
   Sprite.draw(enemies)  # 敵を描画する
+end
+
 end
