@@ -59,7 +59,7 @@ Window.loop do
 
   # 弾の発射処理
   if Input.key_push?(K_SPACE)
-    bullet = Bullet.new(player.x + 28, player.y)
+    bullet = Bullet.new(player.x + 125, player.y + 120)
     bullets.push(bullet)
   end
 
