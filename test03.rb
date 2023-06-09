@@ -4,13 +4,18 @@ require 'dxruby'
 class Player < Sprite
   def initialize
     image = Image.new(64, 64).circle_fill(32, 32, 32, C_RED)
-    @image = Image.load('sensya.png')  # 洗車の画像
-    super(320, 400, @image)
+    @original_image = Image.load('sensya.png')  # 洗車の画像を元のサイズで読み込む
+    @scaled_image = @original_image.dup  # 元の画像を複製して縮小するための画像を作成
+    super(320, 400, image)
   end
 
   def update
     self.x += Input.x * 4
     self.y += Input.y * 4
+  end
+
+  def draw
+    Window.draw_ex(self.x, self.y, @scaled_image, { scale_x: 0.5, scale_y: 0.5 })  # 縮小した画像を描画
   end
 end
 
