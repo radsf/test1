@@ -23,7 +23,6 @@ end
 class Player < Sprite
   def initialize
     image = Image.new(64, 64).circle_fill(32, 32, 32, C_RED)
-    @image = Image.load('sensya.png') #洗車の画像
     super(320, 400, image)
   end
 
